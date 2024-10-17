@@ -13,7 +13,6 @@ type Car struct {
 }
 
 var db Db
-
 var m carMiddleware
 
 func (c *Car) getAllCars() ([]Car, error) {
@@ -31,10 +30,8 @@ func (c *Car) createCar() (Car, error) {
 	}
 
 	car, err := db.add(c)
-
 	if err != nil {
 		return Car{}, err
 	}
-
 	return car, nil
 }

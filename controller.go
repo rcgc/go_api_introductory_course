@@ -6,18 +6,9 @@ import (
 	"strings"
 )
 
-// getAll godoc
-// @Summary		Get all cars
-// @Description Gets all the cars from the database
-// @Tags		car
-// @Accept		json
-// @Produce		json
-// @Success		200 		{array} 		Car			"OK"
-// @Router		/cars		[get]
 func (h *carHandler) getAll(w http.ResponseWriter, r *http.Request){
 	defer h.Unlock()
 	h.Lock()
-
 	car := Car{}
 	q, err := car.getAllCars()
 
@@ -47,20 +38,9 @@ func idFromUrl(r *http.Request) (string) {
 	if len(parts) < 3 {
 		return "-1"
 	}
-
 	if parts[2] == ""{
 		return "-1"
 	}
-	
-	/*
-	id, err := strconv.Atoi(parts[len(parts)-1])
-
-	if err != nil {
-		return -1, errors.New("not found")
-	}
-	*/
-
 	id :=  parts[2]
-
 	return id
 }
